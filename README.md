@@ -1,3 +1,12 @@
 # Langduet local reader
 
-A local reader for editing epubs. Clone this repository, place your unzipped epubs in the root directory, and open start.exe. Then, go to http://localhost:8080 in your web browser and follow the directions on the screen.
+A local reader for editing epubs. 
+
+Steps to get started:
+
+1. Clone this repository.
+2. Install Node.js.
+3. Run `npm i` in the root directory.
+4. Run `npm start`, then open your browser to http://localhost:3000.
+5. Place your unzipped epubs in the `public` directory.
+6. Follow the directions on the screen.

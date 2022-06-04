@@ -1,0 +1,330 @@
+.mainPage {
+  overflow-y: scroll;
+  margin-right: 15px;
+}
+
+.splitReader {
+  position: absolute;
+  width: 50%;
+}
+
+.left {
+  left: 0;
+}
+
+.center {
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin: 0 !important;
+}
+
+.right {
+  right: 0;
+}
+
+.bottom {
+  bottom: 20px;
+}
+
+.top {
+  top: 20px;
+}
+
+.readerControls {
+  position: fixed;
+  background: white;
+  border: 1px solid black;
+  margin: 0 20px;
+  padding: 4px 4px 0 4px;
+}
+
+.readerControlsFlex {
+  position: fixed;
+  background: white;
+  border: 1px solid black;
+  margin: 0 20px;
+  padding: 4px;
+  display: flex;
+  align-items: stretch;
+}
+
+.readerControlsIcon {
+  height: 25px;
+  margin: 2px;
+  padding: 2px;
+  cursor: pointer;
+  border: 1px solid white;
+  background: white;
+  user-select: none;
+}
+
+.readerControlsIcon:hover {
+  border: 1px solid black;
+}
+
+.readerControlsIcon:active {
+  filter: invert();
+  border: 1px solid black;
+}
+
+.readerControlsText {
+  display: flex;
+  align-items: center;
+  margin: 0 0 3px;
+  padding: 0 8px 0 0;
+  cursor: pointer;
+  border: 1px solid white;
+  background: white;
+  user-select: none;
+}
+
+.readerControlsText:hover {
+  border: 1px solid black;
+}
+
+.readerControlsText:active {
+  filter: invert();
+  border: 1px solid black;
+}
+
+.readerControlsTextIcon {
+  height: 30px;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.flashcardIcons {
+  margin-left: 140px;
+}
+
+.epub-container {
+  overflow-x: hidden !important;
+  margin: 80px 0;
+}
+
+.grab {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.grab:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.dragArea {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+}
+
+.hideArea {
+  position: fixed;
+  height: 100%;
+  width: 50%;
+  top: 0;
+  left: 0;
+  background: gray;
+  opacity: 0.9;
+  filter: brightness(1.75);
+}
+
+.blur {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+
+.readerTocOuter {
+  position: fixed;
+  width: 250px;
+  background: white;
+  border: 1px solid black;
+  overflow-y: scroll;
+  margin: 0 20px;
+  top: 80px;
+  bottom: 80px;
+  padding: 1em
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+.disabled {
+  display: none;
+}
+
+.selected {
+  border: 1px solid black;
+}
+
+.disabledIcon {
+  filter: opacity(50%);
+  border: 1px solid white !important;
+  cursor: initial;
+}
+
+.disabledIcon:hover {
+  border: 1px solid white !important;
+}
+
+.disabledIcon:active {
+  filter: opacity(50%) !important;
+}
+
+.hidden {
+  opacity: 0 !important;
+  transition-delay: 2s !important;
+}
+
+.readerHideable {
+  opacity: 1;
+  transition: opacity 500ms;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  z-index: 1;
+}
+
+.readerTop {
+  top: 0;
+}
+
+.readerBottom {
+  bottom: 0;
+}
+
+.topRightTooltip {
+  position: fixed;
+  border: 1px solid black;
+  background: white;
+  padding: 12px;
+  top: 80px;
+  right: 20px;
+}
+
+.topLeftTooltip {
+  position: fixed;
+  border: 1px solid black;
+  background: white;
+  padding: 12px;
+  top: 80px;
+  left: 20px;
+  max-width: 450px;
+}
+
+.tooltipKey {
+  padding-top: 12px;
+}
+
+.draggableSection {
+  width: 100%;
+  height: 100%;
+}
+
+.draggableSectionParent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.fontLabelText {
+  margin-bottom: 0.25em;
+}
+
+.fontLine {
+  border-bottom: 1px solid black;
+  margin: 1em 0;
+  width: 100%;
+}
+
+.fontInput {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: initial;
+  color: initial;
+}
+
+.flashcard {
+  padding: 8px;
+}
+
+.flashcardTitle {
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid black;
+}
+
+.flashcardStep {
+  margin: 4px 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.crossedOut {
+  color: darkgray;
+}
+
+.flashcardButtons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flashcardButton {
+  padding: 8px;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.flashcardCreate {
+  margin-right: 8px;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+.flashcardCreate:hover {
+  background: white;
+  color: black;
+}
+
+.buttonDisabled {
+  background: lightgray;
+  border: 1px solid lightgray;
+  color: darkgray;
+}
+
+.buttonDisabled:hover {
+  background: lightgray;
+  border: 1px solid lightgray;
+  color: darkgray;
+  cursor: initial;
+}
+
+.flashcardCancel {
+  margin-left: 8px;
+  cursor: pointer;
+  background: white;
+}
+
+.underline {
+  stroke-opacity: 1;
+}
+
+.underline > rect {
+  display: none;
+}
+
+.darkHighlight {
+  fill: black;
+}
