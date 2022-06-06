@@ -27,6 +27,7 @@ function Toc(props) {
                       chapterLink={chapter.href} 
                       chapterName={chapter.label} 
                       setLocation={props.setLocation}
+                      current={props.current === chapter.href?.split("#")[0]}
                     />;
   
         items.push(link);
@@ -46,7 +47,7 @@ function Toc(props) {
       if (previous_link)
         tempPagesDict[previous_link.key] = props.spine.length - prev;
     }
-  }, [props.toc, props.spine, props.setLocation])
+  }, [props])
 
   return (
     <div className="readerTocInner" ref={tocRef}>{tocItems}</div>

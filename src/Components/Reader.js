@@ -11,9 +11,9 @@ import Toc from './Toc';
 function Reader(props) {
   const draggableReaderRef = useRef(null);
   const leftRef = useRef(null);
-  const leftRenditionRef = useRef(null);
+  const [leftRendition, setLeftRendition] = useState(null);
   const rightRef = useRef(null);
-  const rightRenditionRef = useRef(null);
+  const [rightRendition, setRightRendition] = useState(null);
 
   const [tocShow, setTocShow] = useState(false);
   const [leftToc, setLeftToc] = useState([]);
@@ -54,19 +54,38 @@ function Reader(props) {
     }
   }
 
+  const [leftLoaded, setLeftLoaded] = useState(false);
+  useEffect(() => {leftRendition?.on("displayed", () => setLeftLoaded(true))}, [leftRendition]);
+  const [rightLoaded, setRightLoaded] = useState(false);
+  useEffect(() => {rightRendition?.on("displayed", () => setRightLoaded(true))}, [rightRendition]);
+
+  const [leftChapter, setLeftChapter] = useState("");
+
+  useEffect(() => {
+    if (leftLoaded)
+      setLeftChapter(leftRendition.currentLocation().start.href);
+  }, [props.leftLocation, leftToc, leftLoaded, leftRendition]);
+
+  const [rightChapter, setRightChapter] = useState("");
+
+  useEffect(() => {
+    if (rightLoaded)
+      setRightChapter(rightRendition.currentLocation().start.href);
+  }, [props.rightLocation, rightToc, rightLoaded, rightRendition]);
+
   useEffect(() => {
     document.addEventListener('keydown', tabFunction)
     document.addEventListener('click', clickFunction)
   }, [])
 
   useEffect(() => {
-    if (rightRenditionRef.current) {
-      rightRenditionRef.current.themes.select(blur ? "blur" : 'custom');
-      var location = rightRenditionRef.current.location.start.cfi;
-      rightRenditionRef.current.clear();
-      rightRenditionRef.current.display(location);
+    if (rightRendition?.themes && rightRendition?.location) {
+      rightRendition.themes.select(blur ? "blur" : 'custom');
+      var location = rightRendition.location.start.cfi;
+      rightRendition.clear();
+      rightRendition.display(location);
     }
-  }, [blur]);
+  }, [blur, rightRendition]);
   
   const [iconShow, setIconShow] = useState(false);
   const [iconTooltipText, setIconTooltipText] = useState("");
@@ -83,11 +102,11 @@ function Reader(props) {
     setFont(event.target.value);
   };
   useEffect(() => {
-    if (rightRenditionRef.current)
-      rightRenditionRef.current.themes.font(font);
-    if (leftRenditionRef.current)
-      leftRenditionRef.current.themes.font(font);
-  }, [font]);
+    if (rightRendition?.themes)
+      rightRendition.themes.font(font);
+    if (leftRendition?.themes)
+      leftRendition.themes.font(font);
+  }, [font, leftRendition, rightRendition]);
   
   const [fontSize, setFontSize] = useState(16);
   const handleFontSizeChange = (event) => {
@@ -122,7 +141,7 @@ function Reader(props) {
               flow: "scrolled-doc",
             }}
             getRendition={(rendition) => {
-              leftRenditionRef.current = rendition;
+              setLeftRendition(rendition);
               rendition.themes.register('custom', {
                 body: {
                   margin: 0
@@ -151,7 +170,7 @@ function Reader(props) {
             flow: "scrolled-doc",
           }}
           getRendition={(rendition) => {
-            rightRenditionRef.current = rendition;
+            setRightRendition(rendition);
             rendition.themes.register('custom', {
               body: {
                 margin: 0,
@@ -181,12 +200,12 @@ function Reader(props) {
       <div className={"readerHideable readerTop"}>
         <div className={(tocShow ? "" : "disabled ") + "readerTocOuter left"}>
           <div className="readerTocInner">
-            <Toc toc={leftToc} spine={leftRef.current?.book?.spine} setLocation={props.setLeftLocation} />
+            <Toc current={leftChapter} toc={leftToc} spine={leftRef.current?.book?.spine} setLocation={props.setLeftLocation} />
           </div>
         </div>
         <div className={(tocShow ? "" : "disabled ") + "readerTocOuter right"}>
           <div className="readerTocInner">
-            <Toc toc={rightToc} spine={rightRef.current?.book?.spine} setLocation={props.setRightLocation} />
+            <Toc current={rightChapter} toc={rightToc} spine={rightRef.current?.book?.spine} setLocation={props.setRightLocation} />
           </div>
         </div>
         <div className="readerControls top left">
