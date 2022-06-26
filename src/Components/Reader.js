@@ -63,14 +63,14 @@ function Reader(props) {
 
   useEffect(() => {
     if (leftLoaded)
-      setLeftChapter(leftRendition.currentLocation().start.href);
+      setLeftChapter(leftRendition.currentLocation().start?.href);
   }, [props.leftLocation, leftToc, leftLoaded, leftRendition]);
 
   const [rightChapter, setRightChapter] = useState("");
 
   useEffect(() => {
     if (rightLoaded)
-      setRightChapter(rightRendition.currentLocation().start.href);
+      setRightChapter(rightRendition.currentLocation().start?.href);
   }, [props.rightLocation, rightToc, rightLoaded, rightRendition]);
 
   useEffect(() => {
