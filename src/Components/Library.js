@@ -19,9 +19,9 @@ function Library(props) {
           <p>Place your unzipped ebooks in the "public" directory. Set the fields below to the content.opf files inside the ebooks.</p>
           <form onSubmit={e => {e.preventDefault(); setLeftLocation(null); setRightLocation(null); setReading(true)}}>
             <p>Book 1 (foreign):</p>
-            /public/<input autoComplete="on" value={book1} onChange={e => setBook1(e.target.value)} placeholder="foreign/path/to/content.opf" />
+            /public/<input style={{"width": "500px"}} autoComplete="on" value={book1} onChange={e => setBook1(e.target.value)} placeholder="foreign/path/to/content.opf" />
             <p>Book 2 (english):</p>
-            /public/<input autoComplete="on" value={book2} onChange={e => setBook2(e.target.value)} placeholder="english/path/to/content.opf" />
+            /public/<input style={{"width": "500px"}} autoComplete="on" value={book2} onChange={e => setBook2(e.target.value)} placeholder="english/path/to/content.opf" />
             <br />
             <br />
             <button type="submit" disabled={!book1 || !book2}>Read</button>
